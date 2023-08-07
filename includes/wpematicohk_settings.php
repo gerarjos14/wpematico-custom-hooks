@@ -200,13 +200,14 @@ if (!class_exists('wpematico_hooks_settings')) :
 			$wpematicohk_theme_editor = isset($wpematicohk_theme_editor) ? $wpematicohk_theme_editor : 'monokai';
 			$wpematicohk_nonce = wp_create_nonce('wpematicohk_nonce');
 			include("data_load/wpematicohk_array_hooks.php");
-
 			$printmb = false;  // If not exists any filter the metabox is printed in the middle
-			for ($i = 0; $i < count($wpematicohk_options_admin['wpematicohk_options_functions']); $i++) {
-				if (!empty($wpematicohk_options_admin['wpematicohk_options_functions'][$i])) {
-					$printmb = true;
-					// If exists at least one filter code the metabox is printed in sidebar
-					break;
+			if (is_array($wpematicohk_options_admin)) {
+				for ($i = 0; $i < count($wpematicohk_options_admin['wpematicohk_options_functions']); $i++) {
+					if (!empty($wpematicohk_options_admin['wpematicohk_options_functions'][$i])) {
+						$printmb = true;
+						// If exists at least one filter code the metabox is printed in sidebar
+						break;
+					}
 				}
 			}
 			?>
