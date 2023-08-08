@@ -46,9 +46,15 @@ if (!class_exists('wpematicohk_sintax')) :
 					$code = wp_unslash($_POST['wpematicohk_options_functions'][$i]);
 
 					$wpmaticohk_sintax_result = self::check($code, $current_action_filter);
-					if (strpos($wpmaticohk_sintax_result['body'], 'no-error-hook') === false) {
-						echo esc_html($wpmaticohk_sintax_result['body']) . '<br><strong> In hook: ' . esc_html($current_action_filter) . '</strong>';
+					if (is_wp_error($wpmaticohk_sintax_result)) {
+						$error_message = __('Something went wrong, try again later and if it still happens check the server error files.', 'wpematico');
+						echo esc_html($error_message);
 						wp_die();
+					} else {
+						if (strpos($wpmaticohk_sintax_result['body'], 'no-error-hook') === false) {
+							echo esc_html($wpmaticohk_sintax_result['body']) . '<br><strong> In hook: ' . esc_html($current_action_filter) . '</strong>';
+							wp_die();
+						}
 					}
 				}
 			}
