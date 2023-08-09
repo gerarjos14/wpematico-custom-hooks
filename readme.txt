@@ -54,6 +54,9 @@ No. The addon requires WPeMatico Free Version to be installed and activated.
 1. Settings page.  Fields to fill.
 
 == Changelog ==
+= 1.2 Aug 09, 2023 =
+* Fix error when checking syntax
+
 = 1.2 Apr 29, 2021 =
 * Added new filters of WPeMatico and many of its extensions.
 * Fixes codemirror for rich text code.
